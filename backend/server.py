@@ -179,7 +179,7 @@ async def get_rental_bookings():
     return [RentalBooking(**parse_from_mongo(booking)) for booking in bookings]
 
 # Article routes
-@api_router.post("/articles", response_model=Article)
+@api_router.post("/articles", response_model=Article, status_code=201)
 async def create_article(article: ArticleCreate):
     article_dict = article.dict()
     article_obj = Article(**article_dict)
