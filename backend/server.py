@@ -200,7 +200,7 @@ async def get_article(article_id: str):
     return Article(**parse_from_mongo(article))
 
 # Service routes
-@api_router.post("/services", response_model=Service)
+@api_router.post("/services", response_model=Service, status_code=201)
 async def create_service(service: ServiceCreate):
     service_dict = service.dict()
     service_obj = Service(**service_dict)
