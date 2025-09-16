@@ -131,7 +131,7 @@ async def root():
     return {"message": "Teskom.id API"}
 
 # Product routes
-@api_router.post("/products", response_model=Product)
+@api_router.post("/products", response_model=Product, status_code=201)
 async def create_product(product: ProductCreate):
     product_dict = product.dict()
     product_obj = Product(**product_dict)
