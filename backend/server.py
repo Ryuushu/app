@@ -165,7 +165,7 @@ async def get_rental_items():
     rental_items = await db.rental_items.find().to_list(1000)
     return [RentalItem(**parse_from_mongo(item)) for item in rental_items]
 
-@api_router.post("/rental-bookings", response_model=RentalBooking)
+@api_router.post("/rental-bookings", response_model=RentalBooking, status_code=201)
 async def create_rental_booking(booking: RentalBookingCreate):
     booking_dict = booking.dict()
     booking_obj = RentalBooking(**booking_dict)
