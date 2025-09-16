@@ -152,7 +152,7 @@ async def get_product(product_id: str):
     return Product(**parse_from_mongo(product))
 
 # Rental routes
-@api_router.post("/rental-items", response_model=RentalItem)
+@api_router.post("/rental-items", response_model=RentalItem, status_code=201)
 async def create_rental_item(rental_item: RentalItemCreate):
     rental_dict = rental_item.dict()
     rental_obj = RentalItem(**rental_dict)
